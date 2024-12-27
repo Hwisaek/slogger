@@ -1,7 +1,7 @@
 package tt
 
 import (
-	"github.com/Hwisaek/slogger/v2"
+	"github.com/Hwisaek/slogger"
 	"log/slog"
 	"testing"
 )
