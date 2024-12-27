@@ -2,7 +2,7 @@ package test
 
 import (
 	"context"
-	"github.com/Hwisaek/slogger"
+	"github.com/Hwisaek/slogger/v2"
 	"log/slog"
 	"testing"
 )
@@ -24,5 +24,4 @@ func TestWithTimeFormat(t *testing.T) {
 	slog.DebugContext(ctx, "debug context")
 	slog.WarnContext(ctx, "warn context")
 	slog.ErrorContext(ctx, "error context")
-
 }

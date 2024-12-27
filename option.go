@@ -17,8 +17,12 @@ var option = *NewOption()
 func NewOption() *Option {
 	return &Option{
 		timeFormat: "2006-01-02T15:04:05.000-07:00",
-		logLevel:   slog.LevelDebug,
+		logLevel:   slog.LevelInfo,
 	}
+}
+
+func GetLogLevel() slog.Level {
+	return option.logLevel
 }
 
 func (r Option) WithContextKey(key string) *Option {

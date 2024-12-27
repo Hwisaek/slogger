@@ -25,5 +25,4 @@ func TestWithContext(t *testing.T) {
 	slog.DebugContext(ctx, "debug context")
 	slog.WarnContext(ctx, "warn context")
 	slog.ErrorContext(ctx, "error context")
-
 }
