@@ -9,7 +9,6 @@ import (
 
 type contextHandler struct {
 	slog.Handler
-	opt *Option
 }
 
 func (h contextHandler) Handle(ctx context.Context, r slog.Record) error {
@@ -18,11 +17,6 @@ func (h contextHandler) Handle(ctx context.Context, r slog.Record) error {
 }
 
 func (h contextHandler) observe(ctx context.Context) (as []slog.Attr) {
-	option := h.opt
-	if option == nil {
-		return
-	}
-
 	if option.addSource {
 		_, file, line, _ := runtime.Caller(4)
 		codePath := fmt.Sprintf("%s:%d", file, line)

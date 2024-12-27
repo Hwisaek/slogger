@@ -7,11 +7,9 @@ import (
 	"testing"
 )
 
-func TestWithContext(t *testing.T) {
+func TestWithAddSource(t *testing.T) {
 	option := slogger.NewOption().
-		WithAddSource(true).
-		WithSpanIdKey("test").
-		WithContextKey("traceId")
+		WithAddSource(false)
 	if err := slogger.Init(option); err != nil {
 		slog.Error(err.Error())
 		return

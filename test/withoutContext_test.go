@@ -1,4 +1,4 @@
-package tt
+package test
 
 import (
 	"github.com/Hwisaek/slogger"

@@ -7,11 +7,10 @@ import (
 	"testing"
 )
 
-func TestWithContext(t *testing.T) {
+func TestWithTimeFormat(t *testing.T) {
 	option := slogger.NewOption().
 		WithAddSource(true).
-		WithSpanIdKey("test").
-		WithContextKey("traceId")
+		WithTimeFormat("15:04:05.000000-07:00")
 	if err := slogger.Init(option); err != nil {
 		slog.Error(err.Error())
 		return

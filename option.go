@@ -7,15 +7,17 @@ import (
 type Option struct {
 	keyList    []string
 	spanIdKey  *string
-	timeFormat *string
-	logLevel   *slog.Level
+	timeFormat string
+	logLevel   slog.Level
 	addSource  bool
 }
 
+var option = *NewOption()
+
 func NewOption() *Option {
 	return &Option{
-		timeFormat: &[]string{"2006-01-02T15:04:05.000-07:00"}[0],
-		logLevel:   &[]slog.Level{slog.LevelDebug}[0],
+		timeFormat: "2006-01-02T15:04:05.000-07:00",
+		logLevel:   slog.LevelDebug,
 	}
 }
 
@@ -31,12 +33,12 @@ func (r Option) WithSpanIdKey(spanIdKey string) *Option {
 }
 
 func (r Option) WithTimeFormat(timeFormat string) *Option {
-	r.timeFormat = &timeFormat
+	r.timeFormat = timeFormat
 	return &r
 }
 
 func (r Option) WithLogLevel(logLevel slog.Level) *Option {
-	r.logLevel = &logLevel
+	r.logLevel = logLevel
 	return &r
 }
 
