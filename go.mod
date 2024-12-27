@@ -1,3 +1,3 @@
-module github.com/Hwisaek/slogger
+module github.com/Hwisaek/slogger/v2
 
 go 1.23
