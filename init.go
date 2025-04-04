@@ -8,7 +8,7 @@ import (
 // Init initializes the logger with the provided options.
 // If opt is nil, default options will be used.
 // It sets up a JSON logger with appropriate time formatting and level.
-// 컴파일 시 -trimpath 옵션을 추가하는 것을 권장합니다.
+// It is recommended to compile with the -trimpath option.
 func Init(opt *Option) error {
 	if opt != nil {
 		option = *opt
@@ -17,7 +17,7 @@ func Init(opt *Option) error {
 	var h contextHandler
 	h.Handler = slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
 		Level:     option.logLevel,
-		AddSource: option.addSource, // 원본 소스 위치를 추가하는 옵션 적용
+		AddSource: option.addSource, // Apply the option to add source location
 		ReplaceAttr: func(groups []string, a slog.Attr) slog.Attr {
 			switch a.Key {
 			case slog.TimeKey:

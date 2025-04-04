@@ -7,15 +7,31 @@ import (
 	"runtime"
 )
 
+// contextHandler implements slog.Handler with support for context values
 type contextHandler struct {
 	slog.Handler
 }
 
+// Handle handles a log record and adds context values to the record
 func (h contextHandler) Handle(ctx context.Context, r slog.Record) error {
-	r.AddAttrs(h.observe(ctx)...)
+	if ctx != nil {
+		// Only extract context values if context is not nil
+		r.AddAttrs(h.observe(ctx)...)
+	}
 	return h.Handler.Handle(ctx, r)
 }
 
+// WithAttrs returns a new handler with attributes added to the set
+func (h contextHandler) WithAttrs(attrs []slog.Attr) slog.Handler {
+	return contextHandler{Handler: h.Handler.WithAttrs(attrs)}
+}
+
+// WithGroup returns a new handler with the specified group added
+func (h contextHandler) WithGroup(name string) slog.Handler {
+	return contextHandler{Handler: h.Handler.WithGroup(name)}
+}
+
+// observe extracts values from context based on configured keys
 func (h contextHandler) observe(ctx context.Context) (as []slog.Attr) {
 	if option.addSource {
 		_, file, line, _ := runtime.Caller(4)
