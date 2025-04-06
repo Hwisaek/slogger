@@ -16,8 +16,7 @@ func Init(opt *Option) error {
 
 	var h contextHandler
 	h.Handler = slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
-		Level:     option.logLevel,
-		AddSource: option.addSource, // Apply the option to add source location
+		Level: option.logLevel,
 		ReplaceAttr: func(groups []string, a slog.Attr) slog.Attr {
 			switch a.Key {
 			case slog.TimeKey:
